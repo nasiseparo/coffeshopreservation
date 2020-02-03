@@ -72,8 +72,8 @@ public class BookingActivity extends AppCompatActivity {
     private static int mDay;
     private static int mHour;
     private static int mMinute;
-    static Button btnDate, btnTime;
-    TextView tvResult;
+    static CardView btnDate, btnTime;
+    static TextView tvSetdate, tvSettime;
     public static HashMap<String, String> listTable = new HashMap<>();
     public static ArrayList<Integer> id = new ArrayList<>();
     public static ArrayList<String> seatno = new ArrayList<>();
@@ -126,6 +126,8 @@ public class BookingActivity extends AppCompatActivity {
         btnTime = findViewById(R.id.btn_settime);
         btnHapus = findViewById(R.id.hapustable);
         btnCekout = findViewById(R.id.btn_cekout);
+        tvSetdate = findViewById(R.id.tv_setdate);
+        tvSettime = findViewById(R.id.tv_settime);
 
         btnDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,13 +207,21 @@ public class BookingActivity extends AppCompatActivity {
         btnCekout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new save().execute();
-                dbHelper.deleteAllTable();
-                Toast.makeText(BookingActivity.this,"Check Out Berhasil",Toast.LENGTH_SHORT).show();
-                Intent i = getIntent();
-                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                finish();
-                startActivity(i);
+                if (tvSetdate.getText().toString().equals("Pilih Tanggal")){
+                    Toast.makeText(BookingActivity.this,"Silahkan Pilih Tanggal...",Toast.LENGTH_SHORT).show();
+
+                }else if (tvSettime.getText().toString().equals("Pilih Jam")){
+                    Toast.makeText(BookingActivity.this,"Silahkan Pilih Jam...",Toast.LENGTH_SHORT).show();
+
+                }else{
+                    new save().execute();
+                    dbHelper.deleteAllTable();
+                    Toast.makeText(BookingActivity.this,"Check Out Berhasil",Toast.LENGTH_SHORT).show();
+                    Intent i = getIntent();
+                    i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    finish();
+                    startActivity(i);
+                }
             }
         });
 
@@ -240,7 +250,7 @@ public class BookingActivity extends AppCompatActivity {
             mDay = day;
 
             // show selected date to date button
-            btnDate.setText(new StringBuilder()
+            tvSetdate.setText(new StringBuilder()
                     .append(mYear).append("-")
                     .append(mMonth + 1).append("-")
                     .append(mDay).append(" "));
@@ -281,7 +291,7 @@ public class BookingActivity extends AppCompatActivity {
             mMinute = minute;
 
             // show selected time to time button
-            btnTime.setText(new StringBuilder()
+            tvSettime.setText(new StringBuilder()
                     .append(pad(mHour)).append(":")
                     .append(pad(mMinute)).append(":")
                     .append("00"));
@@ -528,17 +538,16 @@ public class BookingActivity extends AppCompatActivity {
         ad.setPositiveButton("YA",new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (btnDate.getText().toString().equals("Set Date")){
-                    Toast.makeText(BookingActivity.this,"You Must Set Date First",Toast.LENGTH_SHORT).show();
-                }else if (btnTime.getText().toString().equals("Set Time")){
-                    Toast.makeText(BookingActivity.this,"You Must Set Time First",Toast.LENGTH_SHORT).show();
-
-                }else{
+//                if (btnDate.getText().toString().equals("Set Date")){
+//                    Toast.makeText(BookingActivity.this,"You Must Set Date First",Toast.LENGTH_SHORT).show();
+//                }else if (btnTime.getText().toString().equals("Set Time")){
+//                    Toast.makeText(BookingActivity.this,"You Must Set Time First",Toast.LENGTH_SHORT).show();
+//
+//                }else{
                     //new save().execute();
-                    String jam = btnTime.getText().toString();
-                    String tanggal = btnDate.getText().toString();
+                    String jam = "empty";
+                    String tanggal = "empty";
                     dbHelper.addBookTable(pos,tanggal, jam,200000);
-                  //  listTable.put("table-",pos+" date-"+btnDate.getText().toString()+" time-"+btnTime.getText().toString());
                     Log.d("table list : ",listTable.toString());
                     Intent i = getIntent();
                     i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -546,7 +555,7 @@ public class BookingActivity extends AppCompatActivity {
                     i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(i);
                     i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                }
+             //   }
 
             }});
 
@@ -591,8 +600,8 @@ public class BookingActivity extends AppCompatActivity {
             params.add(new BasicNameValuePair("no_table", dataTable));
             params.add(new BasicNameValuePair("email", email));
             params.add(new BasicNameValuePair("phone", noTlp));
-            params.add(new BasicNameValuePair("date", btnDate.getText().toString()));
-            params.add(new BasicNameValuePair("time", btnTime.getText().toString()));
+            params.add(new BasicNameValuePair("date", tvSetdate.getText().toString()));
+            params.add(new BasicNameValuePair("time", tvSettime.getText().toString()));
 
             String url=IP+"add-reservation.php";
             Log.v("add",url);
