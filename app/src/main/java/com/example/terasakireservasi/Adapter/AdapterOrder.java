@@ -90,7 +90,7 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.ViewHolder> 
               @Override
               public void onClick(View v) {
 //                  if (getListData().get(i).getStatus().equals("confirmed")){
-//                      Toast.makeText(v.getContext(),"Transaksi ini sudah dikonfirmasi",Toast.LENGTH_SHORT).show();
+    //                      Toast.makeText(v.getContext(),"Transaksi ini sudah dikonfirmasi",Toast.LENGTH_SHORT).show();
 //                  }else{
                       Intent x = new Intent(v.getContext(), DetailRiwayatItem.class);
                       x.putExtra("id", getListData().get(i).getId());

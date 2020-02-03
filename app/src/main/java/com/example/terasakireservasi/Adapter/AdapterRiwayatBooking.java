@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -51,6 +52,13 @@ public class AdapterRiwayatBooking extends RecyclerView.Adapter<AdapterRiwayatBo
         viewHolder.tv_tableNumber.setText("Table Number : "+getList().get(i).getNoOfguest());
         viewHolder.tv_dateBooked.setText("Date Booked : "+getList().get(i).getDateRes()+"-"+getList().get(i).getTime());
 
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(),"You Clicked "+getList().get(i).getReserveId(),Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

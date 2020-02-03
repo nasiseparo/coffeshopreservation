@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,InnerclassSeparator">
-        <activity android:name=".Activity.DetailRiwayatItem"></activity>
+        <activity android:name=".Activity.DetailTableActivity"></activity>
+        <activity android:name=".Activity.DetailRiwayatItem" />
         <activity android:name=".Activity.UploadActivity" />
         <activity android:name=".Activity.CheckOutAtivity" />
         <activity android:name=".Activity.DetailMenuActivity" />

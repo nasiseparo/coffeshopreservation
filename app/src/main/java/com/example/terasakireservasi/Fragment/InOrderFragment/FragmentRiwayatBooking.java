@@ -15,8 +15,6 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -30,25 +28,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.terasakireservasi.Activity.BookingActivity;
-import com.example.terasakireservasi.Adapter.AdapterOrder;
 import com.example.terasakireservasi.Adapter.AdapterRiwayatBooking;
-import com.example.terasakireservasi.Fragment.FragmentHome;
 import com.example.terasakireservasi.Koneksi.JSONParser;
-import com.example.terasakireservasi.Model.Data;
 import com.example.terasakireservasi.Model.Riwayat;
 import com.example.terasakireservasi.R;
 import com.example.terasakireservasi.Tools.SharedPrefManager;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
-
 
 public class FragmentRiwayatBooking extends Fragment {
 
