@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:background="#fa315b"
+        android:id="@+id/view_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/delete_icon"
+            android:layout_width="@dimen/ic_delete"
+            android:layout_height="@dimen/ic_delete"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/padd_10"
+            android:src="@drawable/ic_delete" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/padd_10"
+            android:layout_toLeftOf="@id/delete_icon"
+            android:text="Hapus"
+            android:textColor="#000"
+            android:textSize="13dp" />
+
+        <RelativeLayout
+            android:id="@+id/view_foreground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey"
+            android:padding="@dimen/padd_10">
+
+<!--            <ImageView-->
+<!--                android:id="@+id/thumbnail"-->
+<!--                android:layout_width="@dimen/thumbnail"-->
+<!--                android:layout_height="@dimen/thumbnail"-->
+<!--                android:layout_marginRight="@dimen/activity_padding_horizontal"-->
+<!--                android:scaleType="centerCrop" />-->
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/cv"-->
+<!--                app:cardCornerRadius="15dp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content">-->
+<!--                <ImageView-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginTop="13dp"-->
+<!--                    android:id="@+id/imgThumb"-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:background="#fff"-->
+<!--                    android:scaleType="centerCrop" />-->
+<!--            </androidx.cardview.widget.CardView>-->
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/cv"
+                android:id="@+id/nama_pesanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Nama Pesanan"
+                android:textSize="14sp" />
+
+            <TextView
+                android:visibility="gone"
+                android:layout_below="@+id/nama_pesanan"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/cv"
+                android:id="@+id/jml_pesanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Jumlah Pesanan"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_below="@+id/jml_pesanan"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/cv"
+                android:id="@+id/jml_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Harga Pesanan"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_below="@+id/jml_harga"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/cv"
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Status"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_below="@+id/status"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/cv"
+                android:id="@+id/tgl_pesanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Tanggal Pesanan"
+                android:textSize="14sp"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/id_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/id_food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+        </RelativeLayout>
+        <View
+            android:background="#000"
+            android:layout_below="@+id/view_foreground"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+    </RelativeLayout>
+
+</FrameLayout>
