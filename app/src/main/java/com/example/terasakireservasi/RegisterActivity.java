@@ -3,6 +3,8 @@ package com.example.terasakireservasi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -34,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
         ip=jsonParser.getIP();
 
         userName = (EditText)findViewById(R.id.username);
@@ -102,11 +105,19 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     });
                     finish();
-                } else {
+                }else if (sukses ==2){
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(RegisterActivity.this, "Registrasi Gagal", Toast.LENGTH_LONG).show();
+                            username();
+                        }
+                    });
+                }
+                else {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(RegisterActivity.this, "Periksa Koneksi Anda", Toast.LENGTH_LONG).show();
                         }
                     });
                     // gagal update data
@@ -122,5 +133,24 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         }
+    }
+
+
+    public void username(){
+        new AlertDialog.Builder(this)
+                .setTitle("Informasi")
+                .setMessage("Maaf username sudah digunakan...")
+                .setNeutralButton("Tutup", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dlg, int sumthin) {
+
+                    }})
+                .show();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
 }

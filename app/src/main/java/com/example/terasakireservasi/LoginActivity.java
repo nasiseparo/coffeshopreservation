@@ -48,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+
         ip=jsonParser.getIP();
         sharedPrefManager = new SharedPrefManager(this);
 //        if (sharedPrefManager.getSPSudahLoginUser()){
@@ -77,8 +79,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
-//                startActivity(i);
+                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+//                i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+//                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
             }
         });
     }
