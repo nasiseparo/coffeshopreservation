@@ -66,6 +66,7 @@ public class FragmentOrder extends Fragment {
                 i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                 startActivity(i);
             }
         });

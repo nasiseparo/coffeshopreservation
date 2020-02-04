@@ -88,6 +88,7 @@ public class BookingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         IP = jsonParser.getIP();
         setContentView(R.layout.activity_booking);
         db_seatno.clear();
@@ -567,17 +568,17 @@ public class BookingActivity extends AppCompatActivity {
         ad.show();
     }
 
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            Intent i = new Intent(BookingActivity.this, MainActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            Intent i = new Intent(BookingActivity.this, MainActivity.class);
+//            i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+//            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(i);
+//            return true;
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 
 
     class save extends AsyncTask<String, String, String> {
@@ -628,4 +629,10 @@ public class BookingActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
+    }
 }

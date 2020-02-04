@@ -83,6 +83,8 @@ public class ListMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_menu);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
         ip = jsonParser.getIP();
         Intent iGet = getIntent();
         //Category_ID = iGet.getLongExtra("category_id",0);
@@ -241,27 +243,23 @@ public class ListMenuActivity extends AppCompatActivity {
     }
 
 
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            Intent i = new Intent(ListMenuActivity.this, MainActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            clearData();
-            startActivity(i);
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            Intent i = new Intent(ListMenuActivity.this, MainActivity.class);
+//            i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+//            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            clearData();
+//            startActivity(i);
+//            return true;
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 
     @Override
     public void onBackPressed() {
-        if ( getFragmentManager().getBackStackEntryCount() > 0)
-        {
-            getFragmentManager().popBackStack();
-            return;
-        }
         super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     public void getData(){
@@ -377,4 +375,6 @@ public class ListMenuActivity extends AppCompatActivity {
         }
 
     }
+
+
 }

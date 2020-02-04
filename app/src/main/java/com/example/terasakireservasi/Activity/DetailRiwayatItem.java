@@ -80,9 +80,9 @@ public class DetailRiwayatItem extends AppCompatActivity {
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(DetailRiwayatItem.this, MainActivity.class);
+                DetailRiwayatItem.super.onBackPressed();
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                startActivity(i);
+
             }
         });
         cardBtnKonfirmasi = findViewById(R.id.btn_konfirmasi_pesanan);
@@ -223,8 +223,6 @@ public class DetailRiwayatItem extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(DetailRiwayatItem.this, MainActivity.class);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        startActivity(i);
     }
 }

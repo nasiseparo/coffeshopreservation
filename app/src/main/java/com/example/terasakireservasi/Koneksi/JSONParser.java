@@ -31,7 +31,7 @@ public class JSONParser {
 
     }
 
-    public String concat() {return"172.20.10.9"; }
+    public String concat() {return"192.168.56.1"; }
     public String getIP() {return"http://"+concat()+"/terasaki/api/"; } //url untuk api transanction services
     public String uploadImage(){return "http://"+concat()+"/terasaki/order-confirm.php";}
 

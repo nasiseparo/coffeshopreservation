@@ -3,6 +3,7 @@ package com.example.terasakireservasi.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.terasakireservasi.Activity.DetailTableActivity;
 import com.example.terasakireservasi.Model.Riwayat;
 import com.example.terasakireservasi.R;
 
@@ -56,7 +58,12 @@ public class AdapterRiwayatBooking extends RecyclerView.Adapter<AdapterRiwayatBo
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(),"You Clicked "+getList().get(i).getReserveId(),Toast.LENGTH_SHORT).show();
+                Intent pass = new Intent(v.getContext(), DetailTableActivity.class);
+                pass.putExtra("idbooking", getList().get(i).getReserveId());
+                pass.putExtra("tablenumber", getList().get(i).getNoOfguest());
+                pass.putExtra("date", getList().get(i).getDateRes()+" - "+getList().get(i).getTime() );
+                v.getContext().startActivity(pass);
+
             }
         });
 

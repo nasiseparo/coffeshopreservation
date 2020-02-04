@@ -80,6 +80,7 @@ public class DetailMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_menu);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         ip = jsonParser.getIP();
         passingData();
         final Intent[] i = {getIntent()};
